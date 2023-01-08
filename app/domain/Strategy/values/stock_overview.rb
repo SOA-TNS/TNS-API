@@ -2,7 +2,6 @@
 
 require 'rubygems'
 require 'json'
-require 'pp'
 
 module GoogleTrend
   module Value

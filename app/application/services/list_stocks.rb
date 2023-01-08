@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dry/monads'
 
 module GoogleTrend
@@ -13,7 +15,7 @@ module GoogleTrend
 
       DB_ERR = 'Cannot access database'
 
-      def validate_list(input)    
+      def validate_list(input)
         list_request = input[:list_request].call
         if list_request.success?
           Success(input.merge(list: list_request.value!))

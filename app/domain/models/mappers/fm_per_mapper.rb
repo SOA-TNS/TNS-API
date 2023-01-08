@@ -5,7 +5,7 @@ require_relative '../../../infrastructure/gateways/findmind_api'
 module GoogleTrend
   module Gt
     class FmPerMapper
-      def initialize(data_id, start_date = (Time.now - 3600 * 24 * 60).to_s[0..9], end_date = Time.now.to_s[0..9],
+      def initialize(data_id, start_date = (Time.now - (3600 * 24 * 60)).to_s[0..9], end_date = Time.now.to_s[0..9],
                      gateway_class = Gt::StockApi)
         @data_id = data_id
         @gateway_class = gateway_class
@@ -56,7 +56,7 @@ module GoogleTrend
           value_over_time.each { |value| div_yied << value['dividend_yield'] } # array
           div_yied.to_s
         end
-        
+
         def per
           per = []
           value_over_time = @stock['data'] # hash
@@ -74,5 +74,3 @@ module GoogleTrend
     end
   end
 end
-
-

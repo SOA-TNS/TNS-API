@@ -21,7 +21,7 @@ end
 namespace :run do
   desc 'Run API in dev mode'
   task :dev do
-    sh "bundle exec puma -p 9090"
+    sh 'bundle exec puma -p 9090'
   end
 
   desc 'Run API in test mode'
@@ -243,7 +243,7 @@ namespace :quality do
 
   desc 'code style linter'
   task :rubocop do
-    sh 'rubocop'
+    sh 'rubocop --auto-correct-all'
   end
 
   desc 'code smell detector'

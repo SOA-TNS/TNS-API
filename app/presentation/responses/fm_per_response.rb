@@ -1,10 +1,8 @@
-
 # frozen_string_literal: true
 
 module Finmind
-    module Response
-      FmPerInfo = Struct.new(:data_record, :avg_per)
-    end
+  module Response
+    FmPerInfo = Struct.new(:data_record, :avg_per)
   end
-  # in folder "responses"
-  
+end
+# in folder "responses"

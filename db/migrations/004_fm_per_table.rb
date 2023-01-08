@@ -8,7 +8,6 @@ Sequel.migration do
       primary_key :id
       # foreign_key :stock_name, :fmvalues
 
-
       String      :stock_name
       String      :time
       String      :div_yield

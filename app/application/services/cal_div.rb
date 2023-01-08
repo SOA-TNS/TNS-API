@@ -20,9 +20,14 @@ module Finmind
 
       # Steps
 
-      def find_stock_details(input) 
+      def find_stock_details(input)
         input[:data_record] = Repository::For.klass(Entity::FmPerEntity).find_stock_name(input[:requested])
-        input[:data_record] ? Success(input) : Failure(Response::ApiResult.new(status: :not_found, message: NO_STOCK_ERR))
+        if input[:data_record]
+          Success(input)
+        else
+          Failure(Response::ApiResult.new(status: :not_found,
+                                          message: NO_STOCK_ERR))
+        end
       rescue StandardError
         Failure(Response::ApiResult.new(status: :internal_error, message: DB_ERR))
       end
@@ -35,7 +40,6 @@ module Finmind
         App.logger.error "Could not find: #{input[:requested]}"
         Failure(Response::ApiResult.new(status: :not_found, message: NO_STOCK_ERR))
       end
-
     end
   end
 end

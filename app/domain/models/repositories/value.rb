@@ -51,4 +51,3 @@ module GoogleTrend
     end
   end
 end
-

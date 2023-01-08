@@ -14,7 +14,6 @@ module Finmind
       property :name
       property :buy
       property :sell
-
     end
   end
 end

@@ -1,10 +1,8 @@
-
 # frozen_string_literal: true
 
 module Finmind
-    module Response
-      FmBslInfo = Struct.new(:data_record, :net_buy_probability)
-    end
+  module Response
+    FmBslInfo = Struct.new(:data_record, :net_buy_probability)
   end
-  # in folder "responses"
-  
+end
+# in folder "responses"

@@ -46,11 +46,11 @@ describe 'Test API routes' do
       _(info['data_record']['time_series']).must_equal TIME_SERIES
       _(info['risk']['query']).must_equal QUERY
     end
-  
+
     it 'should be report error for an invalid stock' do
       GoogleTrend::Service::AddStock.new.call(QUERY)
-  
-      get "/api/v1/Gtrend/23"
+
+      get '/api/v1/Gtrend/23'
       _(last_response.status).must_equal 404
       _(JSON.parse(last_response.body)['status']).must_include 'not'
     end
@@ -77,12 +77,11 @@ describe 'Test API routes' do
 
   describe 'Get stocks list' do
     it 'should successfully return stock lists' do
-      
-      get "api/v1/Gtrend?list=ewogICJsaXN0IjpbImFwcGxlIiwiYmFuYW5hIl0KfQ=="
+      get 'api/v1/Gtrend?list=ewogICJsaXN0IjpbImFwcGxlIiwiYmFuYW5hIl0KfQ=='
       _(last_response.status).must_equal 200
 
       response = JSON.parse(last_response.body)
-      
+
       stocks = response['stocks']
       _(stocks.count).must_equal 2
       stock = stocks.first
@@ -90,8 +89,7 @@ describe 'Test API routes' do
     end
 
     it 'should return empty lists if none found' do
-
-      get "/api/v1/Gtrend?list=ewogICJsaXN0IjpbImNhdCJdCn0="
+      get '/api/v1/Gtrend?list=ewogICJsaXN0IjpbImNhdCJdCn0='
       _(last_response.status).must_equal 200
 
       response = JSON.parse(last_response.body)

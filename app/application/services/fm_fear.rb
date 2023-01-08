@@ -16,7 +16,7 @@ module GoogleTrend
 
       DB_ERR_MSG = 'Having trouble accessing the database'
       GH_NOT_FOUND_MSG = 'Could not find that stock on GoogleTrend'
- 
+
       def find_FmFear(input)
         if (stock = fm_in_database(input))
           input[:local_stock] = stock
@@ -48,15 +48,14 @@ module GoogleTrend
         Failure(Response::ApiResult.new(status: :not_found, message: NO_STOCK_ERR))
       end
 
-
       def stock_from_FmFear(input)
-        GoogleTrend::Gt::FmFearMapper.new(input["rgt_url"]).find
+        GoogleTrend::Gt::FmFearMapper.new(input['rgt_url']).find
       rescue StandardError
         raise GH_NOT_FOUND_MSG
       end
 
       def fm_in_database(input)
-        Repository::For.klass(Entity::FmFearEntity).find_stock_name(input["rgt_url"])
+        Repository::For.klass(Entity::FmFearEntity).find_stock_name(input['rgt_url'])
       end
     end
   end

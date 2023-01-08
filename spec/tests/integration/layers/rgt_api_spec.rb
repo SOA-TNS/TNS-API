@@ -49,4 +49,3 @@ describe 'Tests RGT API library' do
     end
   end
 end
-

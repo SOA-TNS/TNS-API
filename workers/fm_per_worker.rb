@@ -29,11 +29,7 @@ module FmPer
     Shoryuken.sqs_client_receive_message_opts = { wait_time_seconds: 20 }
     shoryuken_options queue: config.FM_QUEUE_URL, auto_delete: true
 
-    
-    
     def perform(_sqs_msg, request)
-      
-      
       # job = JobReporter.new(request, Worker.config)
 
       # job.report(FmMonitor.starting_percent)
@@ -45,16 +41,16 @@ module FmPer
       # job.report_each_second(5) { FmMonitor.finished_percent }
 
       stock = GoogleTrend::Representer::FmPerRepresenter
-      .new(OpenStruct.new).from_json(request)
+        .new(OpenStruct.new).from_json(request)
 
       new_stock = GoogleTrend::Gt::FmPerMapper.new(stock).find
       GoogleTrend::Repository::For.entity(new_stock).create(new_stock)
     rescue StandardError => e
       puts e.backtrace.join("\n")
 
-    # rescue CodePraise::GitRepo::Errors::CannotOverwriteLocalGitRepo
-    #   # worker should crash fail early - only catch errors we expect!
-    #   puts 'FM EXISTS -- ignoring request'
+      # rescue CodePraise::GitRepo::Errors::CannotOverwriteLocalGitRepo
+      #   # worker should crash fail early - only catch errors we expect!
+      #   puts 'FM EXISTS -- ignoring request'
     end
   end
 end

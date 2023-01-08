@@ -21,9 +21,9 @@ module Finmind
 
       # Steps
 
-      def find_stock_details(input) 
+      def find_stock_details(input)
         input[:data_record] = Repository::For.klass(Entity::FmBuySellEntity).find_stock_name(input[:requested])
-        Success(input) 
+        Success(input)
       rescue StandardError
         Failure(Response::ApiResult.new(status: :internal_error, message: DB_ERR))
       end
@@ -32,15 +32,13 @@ module Finmind
         return Success(input) if input[:data_record]
 
         Messaging::Queue.new(App.config.FM_QUEUE_URL, App.config)
-        # .send(fm_request_json(input))
-        .send(Representer::FmBslRepresenter.new(input[:project]).to_json)
-        
+          # .send(fm_request_json(input))
+          .send(Representer::FmBslRepresenter.new(input[:project]).to_json)
 
         Failure(Response::ApiResult.new(
-          status: :processing,
-          message: { request_id: input[:request_id], msg: PROCESSING_MSG }
-        ))
-
+                  status: :processing,
+                  message: { request_id: input[:request_id], msg: PROCESSING_MSG }
+                ))
       rescue StandardError
         raise GH_NOT_FOUND_MSG
       end

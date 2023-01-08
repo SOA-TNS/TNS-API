@@ -3,7 +3,8 @@
 module GoogleTrend
   module Gt
     class FmNewsMapper
-      def initialize(data_id, start_date = (Time.now - 3600 * 24 * 60).to_s[0..9], end_date = Time.now.to_s[0..9], gateway_class = Gt::StockApi)
+      def initialize(data_id, start_date = (Time.now - (3600 * 24 * 60)).to_s[0..9], end_date = Time.now.to_s[0..9],
+                     gateway_class = Gt::StockApi)
         @data_id = data_id
         @gateway_class = gateway_class
         @start_date = start_date

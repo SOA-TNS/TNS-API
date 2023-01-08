@@ -15,7 +15,7 @@ module GoogleTrend
 
       DB_ERR_MSG = 'Having trouble accessing the database'
       GH_NOT_FOUND_MSG = 'Could not find that stock on GoogleTrend'
- 
+
       def find_stock(input)
         if (stock = stock_in_database(input))
           input[:local_stock] = stock
@@ -43,14 +43,14 @@ module GoogleTrend
       # following are support methods that other services could use
 
       def stock_from_googletrend(input)
-        GoogleTrend::Gt::TrendMapper.new(input["rgt_url"], App.config.RGT_TOKEN).find
+        GoogleTrend::Gt::TrendMapper.new(input['rgt_url'], App.config.RGT_TOKEN).find
       rescue StandardError
         raise GH_NOT_FOUND_MSG
       end
 
       def stock_in_database(input)
         Repository::For.klass(Entity::RgtEntity)
-        .find_stock_name(CGI.unescape(input["rgt_url"]))
+          .find_stock_name(CGI.unescape(input['rgt_url']))
       end
     end
   end

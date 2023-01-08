@@ -12,10 +12,10 @@ module GoogleTrend
     module For
       ENTITY_REPOSITORY = {
         Entity::FmBuySellEntity => FmBuySell,
-        Entity::FmFearEntity => FmFear,
-        Entity::FmNewsEntity => FmNews,
-        Entity::FmPerEntity => FmPer,
-        Entity::RgtEntity => Value
+        Entity::FmFearEntity    => FmFear,
+        Entity::FmNewsEntity    => FmNews,
+        Entity::FmPerEntity     => FmPer,
+        Entity::RgtEntity       => Value
       }.freeze
 
       def self.klass(entity_klass)
@@ -28,4 +28,3 @@ module GoogleTrend
     end
   end
 end
-

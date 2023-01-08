@@ -11,7 +11,7 @@ module GoogleTrend
 
       def self.find_stock_name(stock_name)
         db_stock = Database::FmBuysellOrm
-          .where(stock_name: stock_name)
+          .where(stock_name:)
           .first
 
         rebuild_entity(db_stock)
@@ -29,7 +29,7 @@ module GoogleTrend
       end
 
       def self.create(entity)
-        puts("entity")
+        puts('entity')
         puts(entity.to_attr_hash)
         db_stock = Database::FmBuysellOrm.create(entity.to_attr_hash)
         rebuild_entity(db_stock)
@@ -44,7 +44,6 @@ module GoogleTrend
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
-       
         Entity::FmBuySellEntity.new(
           db_record.to_hash.merge(
             query: db_record.to_hash[:query]
@@ -54,4 +53,3 @@ module GoogleTrend
     end
   end
 end
-

@@ -11,7 +11,7 @@ module GoogleTrend
 
       def self.find_stock_name(stock_name)
         db_stock = Database::FmNewsOrm
-          .where(stock_name: stock_name)
+          .where(stock_name:)
           .first
 
         rebuild_entity(db_stock)
@@ -51,4 +51,3 @@ module GoogleTrend
     end
   end
 end
-

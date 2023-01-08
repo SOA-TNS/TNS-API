@@ -15,7 +15,6 @@ module Finmind
       property :div_yield
       property :per
       property :pbr
-
     end
   end
 end

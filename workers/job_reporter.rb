@@ -7,10 +7,10 @@ module FmPer
   class JobReporter
     attr_accessor :project
 
-    def initialize(request_json, config) 
+    def initialize(request_json, config)
       fm_request = Representer::StockInfo
-      .new(OpenStruct.new)
-      .from_json(request_json)
+        .new(OpenStruct.new)
+        .from_json(request_json)
 
       @project = fm_request.project
       @publisher = ProgressPublisher.new(config, fm_request.id)

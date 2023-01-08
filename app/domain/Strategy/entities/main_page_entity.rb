@@ -15,7 +15,6 @@ module GoogleTrend
       def to_attr_hash
         to_hash.except(:id)
       end
-      
     end
   end
 end

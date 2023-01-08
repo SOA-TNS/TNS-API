@@ -11,7 +11,7 @@ module GoogleTrend
 
       def self.find_stock_name(time)
         db_stock = Database::FmFearOrm
-          .where(time: time)
+          .where(time:)
           .first
 
         rebuild_entity(db_stock)
@@ -51,4 +51,3 @@ module GoogleTrend
     end
   end
 end
-

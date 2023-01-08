@@ -10,7 +10,7 @@ module GoogleTrend
 
       attr_reader :parameter
 
-      def initialize(dataset, data_id, start_date = (Time.now - 3600 * 24 * 1).to_s[0..9],
+      def initialize(dataset, data_id, start_date = (Time.now - (3600 * 24 * 1)).to_s[0..9],
                      end_date = Time.now.to_s[0..9])
         @parameter = {
           dataset:,
@@ -68,7 +68,7 @@ module GoogleTrend
   end
 end
 
-p = GoogleTrend::Gt::StockApi.new("TaiwanStockNews","2330").jason
+p = GoogleTrend::Gt::StockApi.new('TaiwanStockNews', '2330').jason
 print(p)
 
 # TaiwanStockPER
@@ -76,5 +76,3 @@ print(p)
 # TaiwanStockInstitutionalInvestorsBuySell
 # CnnFearGreedIndex
 # ["data"][0]["stock_id"]
-
-

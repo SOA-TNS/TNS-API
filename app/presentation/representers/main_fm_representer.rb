@@ -12,7 +12,6 @@ module Finmind
       property :avg_per
       property :avg_dividend_yield
       property :net_buy_probability
-
     end
   end
 end

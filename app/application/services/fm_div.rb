@@ -16,7 +16,7 @@ module GoogleTrend
 
       DB_ERR_MSG = 'Having trouble accessing the database'
       GH_NOT_FOUND_MSG = 'Could not find that stock on GoogleTrend'
- 
+
       def find_FmPer(input)
         if (stock = fm_in_database(input))
           input[:local_stock] = stock
@@ -49,13 +49,13 @@ module GoogleTrend
       end
 
       def stock_from_fmPer(input)
-        GoogleTrend::Gt::FmPerMapper.new(input["rgt_url"]).find
+        GoogleTrend::Gt::FmPerMapper.new(input['rgt_url']).find
       rescue StandardError
         raise GH_NOT_FOUND_MSG
       end
 
       def fm_in_database(input)
-        Repository::For.klass(Entity::FmPerEntity).find_stock_name(input["rgt_url"])
+        Repository::For.klass(Entity::FmPerEntity).find_stock_name(input['rgt_url'])
       end
     end
   end

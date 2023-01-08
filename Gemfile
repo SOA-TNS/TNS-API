@@ -7,10 +7,9 @@ ruby File.read('.ruby_version').strip
 gem 'google_search_results'
 
 gem 'nokogiri'
-gem 'ox'
 gem 'oga'
+gem 'ox'
 gem 'rexml'
-
 
 # CONFIGURATION
 gem 'figaro', '~> 1.2'
@@ -60,12 +59,12 @@ group :production do
 end
 
 # Asynchronicity
-gem 'concurrent-ruby', '~> 1.1'
 gem 'aws-sdk-sqs', '~> 1.48'
+gem 'concurrent-ruby', '~> 1.1'
 
 # WORKER
-gem 'shoryuken', '~> 5.3'
 gem 'faye', '~> 1.4'
+gem 'shoryuken', '~> 5.3'
 
 # TESTING
 group :test do
